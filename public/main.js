@@ -1,12 +1,15 @@
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 var thumbDown = document.getElementsByClassName("fa-thumbs-down");
-var trash = document.getElementsByClassName("fa-trash");
+var trash = document.getElementsByClassName("fa-trash-o");
 
 Array.from(thumbUp).forEach(function (element) {
   element.addEventListener('click', function () {
-    const name = this.parentNode.parentNode.childNodes[1].innerText
-    const msg = this.parentNode.parentNode.childNodes[3].innerText
+    const name = this.parentNode.parentNode.childNodes[1].innerText.trim()
+    const msg = this.parentNode.parentNode.childNodes[3].innerText.trim()
     const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
+    console.log(name)
+    console.log(msg)
+    console.log(thumbUp)
     fetch('thumbup', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
@@ -28,8 +31,8 @@ Array.from(thumbUp).forEach(function (element) {
 
 Array.from(thumbDown).forEach(function (element) {
   element.addEventListener('click', function () {
-    const name = this.parentNode.parentNode.childNodes[1].innerText
-    const msg = this.parentNode.parentNode.childNodes[3].innerText
+    const name = this.parentNode.parentNode.childNodes[1].innerText.trim()
+    const msg = this.parentNode.parentNode.childNodes[3].innerText.trim()
     const thumbDown = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
     console.log(this.parentNode.parentNode.childNodes)
     fetch('thumbdown', {
@@ -53,8 +56,8 @@ Array.from(thumbDown).forEach(function (element) {
 
 Array.from(trash).forEach(function (element) {
   element.addEventListener('click', function () {
-    const name = this.parentNode.parentNode.childNodes[1].innerText
-    const msg = this.parentNode.parentNode.childNodes[3].innerText
+    const name = this.parentNode.parentNode.childNodes[1].innerText.trim()
+    const msg = this.parentNode.parentNode.childNodes[3].innerText.trim()
     fetch('messages', {
       method: 'delete',
       headers: {

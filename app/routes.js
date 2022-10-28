@@ -45,7 +45,8 @@ module.exports = function (app, passport, db) {
         sort: { _id: -1 },
         upsert: true
       }, (err, result) => {
-        if (err) return res.send(err)
+        if (err) return console.log(err)
+        console.log(result)
         res.send(result)
       })
   })
