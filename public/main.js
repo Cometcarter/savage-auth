@@ -7,8 +7,6 @@ Array.from(thumbUp).forEach(function (element) {
     const name = this.parentNode.parentNode.childNodes[1].innerText.trim()
     const msg = this.parentNode.parentNode.childNodes[3].innerText.trim()
     const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-    console.log(name)
-    console.log(msg)
     console.log(thumbUp)
     fetch('thumbup', {
       method: 'put',
@@ -33,8 +31,8 @@ Array.from(thumbDown).forEach(function (element) {
   element.addEventListener('click', function () {
     const name = this.parentNode.parentNode.childNodes[1].innerText.trim()
     const msg = this.parentNode.parentNode.childNodes[3].innerText.trim()
-    const thumbDown = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
-    console.log(this.parentNode.parentNode.childNodes)
+    const thumbDown = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
+    console.log(thumbDown)
     fetch('thumbdown', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },

@@ -20,14 +20,20 @@ module.exports = function (app, passport, db) {
 
   // LOGOUT ==============================
   app.get('/logout', function (req, res) {
-    req.logout();
+    req.logout(() => {
+      console.log('User logged out')
+    });
     res.redirect('/');
   });
 
   // message board routes ===============================================================
   //===============================================================================
   app.post('/messages', (req, res) => {
-    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown: 0 }, (err, result) => {
+    db.collection('messages').save({
+      name: req.body.name,
+      msg: req.body.msg,
+      thumbUp: 0, thumbDown: 0
+    }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
       res.redirect('/profile')
@@ -36,7 +42,10 @@ module.exports = function (app, passport, db) {
   // thumbup ==============================
   app.put('/thumbup', (req, res) => {
     db.collection('messages')
-      .findOneAndUpdate({ name: req.body.name, msg: req.body.msg }, {
+      .findOneAndUpdate({
+        name: req.body.name,
+        msg: req.body.msg
+      }, {
         $set: {
           thumbUp: req.body.thumbUp + 1
         }
@@ -53,9 +62,12 @@ module.exports = function (app, passport, db) {
   // thumbdown ==============================
   app.put('/thumbdown', (req, res) => {
     db.collection('messages')
-      .findOneAndUpdate({ name: req.body.name, msg: req.body.msg }, {
+      .findOneAndUpdate({
+        name: req.body.name,
+        msg: req.body.msg
+      }, {
         $set: {
-          thumbDown: req.body.thumbDown + 1
+          thumbUp: req.body.thumbUp - 1
         }
 
       }, {
@@ -68,13 +80,16 @@ module.exports = function (app, passport, db) {
   })
 
   app.delete('/messages', (req, res) => {
-    db.collection('messages').findOneAndDelete({ name: req.body.name, msg: req.body.msg }, (err, result) => {
+    db.collection('messages').findOneAndDelete({
+      name: req.body.name,
+      msg: req.body.msg
+    }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')
     })
   })
-  //==============================================================================
-  // =============================================================================
+  //============================================================================
+  // ===========================================================================
 
 
   // AUTHENTICATE (FIRST LOGIN) ==================================================
