@@ -1,4 +1,4 @@
-# :bat: :fallen_leaf: 21 Savage fan site:fallen_leaf: :bat:
+# :bat: :fallen_leaf: 21 Savage fullstack fan site:fallen_leaf: :bat:
 
 ### created a fullstack fan site where people can talk about 21 Savage 
 
