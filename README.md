@@ -2,7 +2,7 @@
 
 ### created a fullstack fan site where people can talk about 21 Savage 
 
-![savageauth](https://i.imgur.com/4UlrsHX.png)
+![savageauth](https://im2.ezgif.com/tmp/ezgif-2-426582a159.gif)
 
 ```
 I completed the challenge: 5
